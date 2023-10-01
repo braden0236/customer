@@ -1,0 +1,31 @@
+{
+    "editor.wordWrapColumn": 120,
+    "editor.tabSize": 4,
+    "editor.lineNumbers": "on",
+    "editor.smoothScrolling": false,
+    "editor.wordWrap": "on",
+    "editor.tabCompletion": "on",
+    "editor.renderWhitespace": "boundary",
+    "editor.showFoldingControls": "always",
+    "editor.snippetSuggestions": "top",
+    "editor.fontLigatures": true,
+    "editor.insertSpaces": true,
+    "editor.minimap.enabled": false,
+    "editor.showUnused": true,
+
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+
+    "window.zoomLevel": 2,
+    "window.title": "${dirty}${activeEditorLong}",
+
+    "workbench.colorCustomizations": {
+        "terminal.background": "#2a003b",
+    },
+
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "files.eol": "\n",
+}

@@ -1,0 +1,25 @@
+{
+    "image": "mcr.microsoft.com/dotnet/sdk:7.0",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "search.exclude": {
+                    "**/bin": true,
+                    "**/obj": true
+                }
+            },
+            "extensions": [
+				"ms-dotnettools.csharp",
+				"mhutchie.git-graph",
+				"rangav.vscode-thunder-client",
+				"streetsidesoftware.code-spell-checker",
+				"alexcvzz.vscode-sqlite"
+			]
+        }
+    }
+    // ,
+    // "runArgs": [
+    //     "--link",
+    //     "zipkin"
+    // ]
+}
