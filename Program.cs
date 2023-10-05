@@ -23,7 +23,7 @@ builder.Services.AddScoped<ICustomerService, CustomerService>();
 
 Action<ResourceBuilder> configureResource = resource => resource
     .AddService(
-        serviceName: builder.Configuration.GetValue("ServiceName", defaultValue: "otel-test")!,
+        serviceName: builder.Configuration.GetValue("ServiceName", defaultValue: "otel-test0")!,
         serviceVersion: typeof(Program).Assembly.GetName().Version?.ToString() ?? "unknown",
         serviceInstanceId: Environment.MachineName
     )
