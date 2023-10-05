@@ -28,4 +28,13 @@
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 1000,
     "files.eol": "\n",
+
+    "omnisharp.enableRoslynAnalyzers": true,
+    "omnisharp.enableEditorConfigSupport": true,
+
+    "cSpell.words": [
+        "zipkin",
+        "healthz",
+        "otel"
+    ]
 }
