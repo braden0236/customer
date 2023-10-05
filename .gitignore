@@ -478,3 +478,5 @@ $RECYCLE.BIN/
 
 DS_Store
 customer.db
+customer.db-shm
+customer.db-wal
