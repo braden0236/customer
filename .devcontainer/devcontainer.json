@@ -13,7 +13,8 @@
 				"mhutchie.git-graph",
 				"rangav.vscode-thunder-client",
 				"streetsidesoftware.code-spell-checker",
-				"alexcvzz.vscode-sqlite"
+				"alexcvzz.vscode-sqlite",
+				"EditorConfig.EditorConfig"
 			]
         }
     }
