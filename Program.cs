@@ -3,6 +3,7 @@ using customer.Endpoints;
 using customer.Repositories;
 using customer.Services;
 using Microsoft.EntityFrameworkCore;
+using Monitoring;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.ResourceDetectors.Container;
 using OpenTelemetry.Resources;
@@ -20,6 +21,7 @@ builder.Services.AddDbContextPool<CustomerContext>(options =>
 
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddSingleton<MetricInstrumentation>();
 
 Action<ResourceBuilder> configureResource = resource => resource
     .AddService(
@@ -36,7 +38,8 @@ builder.Services.AddOpenTelemetry()
         .AddHttpClientInstrumentation()
         .AddAspNetCoreInstrumentation()
         .AddProcessInstrumentation()
-        .AddPrometheusExporter())
+        .AddPrometheusExporter()
+        .AddMeter(MetricInstrumentation.MeterName))
     .WithTracing(tracerBuilder => tracerBuilder
         .SetSampler(new AlwaysOnSampler())
         .AddRedisInstrumentation(options =>
@@ -70,6 +73,10 @@ builder.Services.AddOpenTelemetry()
 
 var app = builder.Build();
 app.MapHealthChecks("/healthz");
+app.Lifetime.ApplicationStopping.Register(() =>
+{
+    Console.WriteLine("[Startup] ApplicationLifetime - Stopping");
+});
 
 app.MapGroup("/v1/customer").MapCustomerApi().AllowAnonymous().WithTags("Public");
 

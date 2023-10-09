@@ -1,6 +1,7 @@
 using customer.Contracts.Requests;
 using customer.Extensions;
 using customer.Services;
+using Monitoring;
 
 namespace customer.Endpoints;
 
@@ -8,9 +9,10 @@ public static class CustomerEndpoint
 {
     public static RouteGroupBuilder MapCustomerApi(this RouteGroupBuilder group)
     {
-        group.MapGet("/{id:guid}", async (Guid id, ICustomerService _service) =>
+        group.MapGet("/{id:guid}", async (Guid id, ICustomerService _service, MetricInstrumentation instrumentation) =>
         {
             var customer = await _service.GetAsync(id);
+            instrumentation.QueryCustomerCounter.Add(1);
             if (customer == null)
             {
                 return Results.NoContent();
@@ -19,9 +21,10 @@ public static class CustomerEndpoint
             return Results.Ok(customer.ToCustomerResponse());
         });
 
-        group.MapGet("/", async (ICustomerService _service) =>
+        group.MapGet("/", async (ICustomerService _service, MetricInstrumentation instrumentation) =>
         {
             var customers = await _service.GetAllAsync();
+            instrumentation.QueryCustomerCounter.Add(1);
             if (customers == null)
             {
                 return null;
