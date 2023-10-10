@@ -9,10 +9,10 @@ public static class CustomerEndpoint
 {
     public static RouteGroupBuilder MapCustomerApi(this RouteGroupBuilder group)
     {
-        group.MapGet("/{id:guid}", async (Guid id, ICustomerService _service, MetricInstrumentation instrumentation) =>
+        group.MapGet("/{id:guid}", async (Guid id, ICustomerService _service, MetricInstrumentation _instrumentation) =>
         {
             var customer = await _service.GetAsync(id);
-            instrumentation.QueryCustomerCounter.Add(1);
+            _instrumentation.QueryCustomerCounter.Add(1);
             if (customer == null)
             {
                 return Results.NoContent();
@@ -21,10 +21,10 @@ public static class CustomerEndpoint
             return Results.Ok(customer.ToCustomerResponse());
         });
 
-        group.MapGet("/", async (ICustomerService _service, MetricInstrumentation instrumentation) =>
+        group.MapGet("/", async (ICustomerService _service, MetricInstrumentation _instrumentation) =>
         {
             var customers = await _service.GetAllAsync();
-            instrumentation.QueryCustomerCounter.Add(1);
+            _instrumentation.QueryCustomerCounter.Add(1);
             if (customers == null)
             {
                 return null;

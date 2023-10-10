@@ -50,7 +50,9 @@ builder.Services.AddOpenTelemetry()
         {
             options.Filter = httpContext =>
             {
-                if (httpContext.Request.Path.ToString().ToLower() == "/metrics")
+                if (httpContext.Request.Path.ToString().ToLower() == "/metrics" ||
+                    httpContext.Request.Path.ToString().ToLower() == "/healthz"
+                )
                 {
                     return false;
                 }
