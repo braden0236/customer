@@ -12,10 +12,10 @@ using OpenTelemetry.Trace;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHealthChecks();
 builder.Services.AddDbContextPool<CustomerContext>(options =>
-{
-    options.UseSqlite(builder.Configuration.GetConnectionString("CustomerDB"));
-    // options.EnableSensitiveDataLogging();
-},
+    {
+        options.UseSqlite(builder.Configuration.GetConnectionString("CustomerDB"));
+        // options.EnableSensitiveDataLogging();
+    },
     poolSize: 1024
 );
 

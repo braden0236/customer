@@ -22,6 +22,7 @@
     "workbench.colorCustomizations": {
         "terminal.background": "#2a003b",
     },
+    "terminal.integrated.fontFamily": "MesloLGL Nerd Font",
 
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,

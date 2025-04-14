@@ -1,5 +1,11 @@
 {
-    "image": "mcr.microsoft.com/dotnet/sdk:7.0",
+    "name": "DonetCore8",
+    "image": "mcr.microsoft.com/dotnet/sdk:8.0",
+	"features": {
+		"ghcr.io/nils-geistmann/devcontainers-features/zsh:0": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
+	"postCreateCommand": "dotnet restore",
     "customizations": {
         "vscode": {
             "settings": {
@@ -9,13 +15,13 @@
                 }
             },
             "extensions": [
-				"ms-dotnettools.csharp",
-				"mhutchie.git-graph",
-				"rangav.vscode-thunder-client",
-				"streetsidesoftware.code-spell-checker",
-				"alexcvzz.vscode-sqlite",
-				"EditorConfig.EditorConfig"
-			]
+                "ms-dotnettools.csharp",
+                "mhutchie.git-graph",
+                "rangav.vscode-thunder-client",
+                "streetsidesoftware.code-spell-checker",
+                "EditorConfig.EditorConfig",
+                "qwtel.sqlite-viewer"
+            ]
         }
     }
     // ,
